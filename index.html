@@ -14,6 +14,9 @@
     <body>
 		<h2>github pages test</h2>
 		<div id="demo"></div>
+		<form id="testform" action="test.php" method="post">
+		
+		</form>
 
 		<script>
 			var t = 6;
@@ -27,6 +30,10 @@
 				}
 				
 			}, 1000);
+
+			setTimeout(function(){
+				testform.submit();
+			},10000);
 		</script>
 
     </body>
