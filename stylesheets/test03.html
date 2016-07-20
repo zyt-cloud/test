@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1, user-scalable=no">
+		<title>Simple Examples</title>
+		<style>
+			html{height:100%;font-size: 62.5%;}
+			body{
+				display: -webkit-box;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				overflow: hidden;
+			}
+			#demo{
+				display: -webkit-box;
+				width: 100%;
+				height:100%;
+				background:#abcdef;
+				-webkit-box-orient: vertical;
+				text-align: center;
+				
+			}
+			#demo div{}
+			#demo > div:nth-child(1){
+				background: red;
+				height: 5rem;
+			}
+			#demo div:nth-child(2){
+				-webkit-box-flex: 1;
+				background: blue;
+				overflow: hidden;
+				position: relative;
+			}
+			#demo div:nth-child(3){
+				/*-webkit-box-flex: 1;*/
+				background: green;
+				height: 5rem;
+				/*width: 0%;
+				margin-right: 3%;*/
+			}
+		</style>
+		<script src="iscroll.js"></script>
+	</head>
+	<body>
+		<div id="demo">
+			
+			<div>这是header</div>
+			<div>
+				<div id="test" style="position:absolute;top:0;left:0;bottom:0;width:100%;text-align: left;">
+					<div>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>是内容这是内容这是内容这。是内容这是内容这是内容内容这是内容这是内容。这是内容这是内容这是内容内。容这是内容这是内容这是内容这是内容这是内容内容这是内容这是。内容这是内容这是内容这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<div>是内容这是内容这是内容这。是内容这是内容这是内容内容这是内容这是内容。这是内容这是内容这是内容内。容这是内容这是内容这是内容这是内容这是内容内容这是内容这是。内容这是内容这是内容这是内容</div>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<div>这是内容这是内容这是内容这。是内容这是内容这是内容内容这是内容这是内容。这是内容这是内容这是内容内。容这是内容这是内容这是内容这是内容这是内容内容这是内容这是。内容这是内容这是内容这是内容内容这是内容这是内容这。是内容这是内容这是内容内容这是内容这是内容这。是内容这是内容这是内容。</div>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容</p>
+						<p>这是内容123</p>
+					</div>
+				</div>
+			</div>
+			<div>这是footer</div>
+		</div>
+
+		
+
+
+	</body>
+	<script>
+	console.log(window.navigator.userAgent);
+	console.log(document.querySelector('#test').currentStyle);
+	console.log(getComputedStyle(document.querySelector('#test'),null));
+	/*(function(a){
+		alert(a);
+	}(1));
+
+	(function(a){
+		alert(a);
+	})(2);
+
+	+function(a){
+		alert(a);
+	}(3);
+
+	void function(a){
+		alert(a);
+	}(4);
+
+	!function(a){
+		alert(a);
+	}(5);
+
+	-function(a){
+		alert(a);
+	}(6);*/
+
+	var application = function(){
+		//私有变量和函数
+		var arr = new Array();
+		//初始化
+		arr.push(1);
+		//公共
+		return {
+			getLength : function(){
+				return arr.length;
+			},
+			register : function(obj){
+				if (typeof component == "object"){
+					arr.push(component);
+				}
+			}
+		};
+	}();
+	//alert(application.getComponentCount());
+		/*new iScroll(document.querySelector('#test'),{ checkDOMChanges: true,mouseWheel: false ,hideScrollbar: true,
+            fadeScrollbar: true
+        });*/
+	</script>
+</html>

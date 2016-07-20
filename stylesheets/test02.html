@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1, user-scalable=no">
+		<title>Simple Examples</title>
+		<style>
+			html{height:100%;font-size: 62.5%;}
+			body{
+				display: -webkit-box;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				overflow: hidden;
+			}
+			#demo{
+				display: -webkit-box;
+				width: 100%;
+				height:100%;
+				-webkit-box-align:center;
+				-webkit-align-items: center;
+				background:#abcdef;
+				padding:3%;box-sizing:border-box;
+				/*position:absolute;
+				top: 0;
+				left: 0;
+				height: 100%;*/
+			}
+			#demo div{height:100%;}
+			#demo div:nth-child(1){
+				-webkit-box-flex: 2;
+				background: red;
+				width: 0%;		
+				height: auto;  margin-bottom: 10rem;
+			}
+			#demo div:nth-child(2){
+				-webkit-box-flex: 1;
+				background: blue;
+				width: 0%;
+			}
+			#demo div:nth-child(3){
+				/*-webkit-box-flex: 1;*/
+				background: green;
+				/*width: 0%;
+				margin-right: 3%;*/
+			}
+		</style>
+		<script src="iscroll.js"></script>
+	</head>
+	<body>
+		<input type="radio" />男
+		<div id="demo">
+			
+			<div>fdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfgfdgsfgsdfgsdgdsfgsdfgfdsgdsgsdfg</div>
+			<div>div3</div>
+			<div>div1</div>
+		</div>
+
+		
+
+
+	</body>
+	<script>
+		/*new iScroll(document.querySelector('#demo'),{ checkDOMChanges: true,mouseWheel: false ,hideScrollbar: true,
+            fadeScrollbar: true
+        });*/
+		window.onload = function(){
+			alert('window loaded');
+		};
+		window.addEventListener('DOMContentLoaded',function(){
+			alert('dom content loaded');
+		},false);
+		document.onclick = function(){
+			var div = document.createElement('div');
+			div.innerHTML = 'zhang san';
+			document.body.appendChild(div);
+			demo.innerHTML = 'lisi';
+		};
+	</script>
+</html>
