@@ -13,5 +13,21 @@
     </head>
     <body>
 		<h2>github pages test</h2>
+		<div id="demo"></div>
+
+		<script>
+			var t = 5;
+			var timer = setInterval(function(){
+				if(--t > 0 ){
+					demo.innerHTML = t;
+				}
+				else {
+					demo.innerHTML = '派大星';
+					clearInterval(timer);
+				}
+				
+			}, 1000);
+		</script>
+
     </body>
 </html>
