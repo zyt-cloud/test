@@ -1,0 +1,18 @@
+<nav class="hide" style="background: #1976D2;">
+
+  <a [routerLink]=" ['./system-set']"
+    routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+    SystemSet
+  </a>
+  <a [routerLink]=" ['./system-set/set-time']"
+    routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+    SystemSet/time
+  </a>
+
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+

@@ -1,0 +1,126 @@
+<div class="home" [class.hide]="toChild">
+	<nav class="home-nav border-bottom" [style.top]="0">
+		<ul class="display-table">
+			<li class="p-l-md" [routerLink]=" ['/home']">
+				<div><i class="fa fa-home"></i></div>
+				<div>首页</div>
+			</li>
+			<li>
+				<a [routerLink]=" ['/collect']">
+					<div><i class="fa fa-star"></i></div>
+					<div>收藏</div>
+				</a>
+			</li>
+			<li class="text-right">
+				<div><i class="fa fa-search"></i></div>
+			</li>
+		</ul>
+	</nav>
+	<div [style.padding-top.px]="50">
+		<div class="list-time border-bottom">2017-12-12</div>
+		<ul class="list">
+			<li class="list-item">
+				<a class="flex" [routerLink]=" ['./detail','45']">
+					<div class="list-left">
+						<div class="flex flex-middle"><i class="fa fa-picture-o" style="color:#fff;" [style.font-size.px]="32"></i></div>
+					</div>
+					
+					<div class="flex-item1">
+						<div class="p-b-sm">
+							<span class="pull-right p-l-xs">08:25:08</span>
+							<span class="ellipsis" [style.max-width.px]="150">浙江杭州浙江杭州江南皮革厂</span>
+						</div>
+						<div class="user">
+							<i class="pull-right fa fa-chevron-right arrow-right"></i>
+							<p>
+								<span>黄鹤</span>
+								<span class="m-l-xs">137XXXX0808</span>
+							</p>
+							<p>拨打时间：下午</p>
+						</div>
+						<div class="list-oprate">
+							<a href="javascript:;"><i class="fa fa-edit"></i></a>
+							<a class="m-l-xs" href="javascript:;"><i class="fa fa-share-alt"></i></a>
+							<a class="m-l-xs" href="javascript:;"><i class="fa fa-heart-o"></i></a>
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="list-item">
+				<a class="flex" [routerLink]=" ['./detail','45']">
+					<div class="list-left">
+						<div class="flex flex-middle"><i class="fa fa-picture-o" style="color:#fff;" [style.font-size.px]="32"></i></div>
+					</div>
+					
+					<div class="flex-item1">
+						<div class="p-b-sm">
+							<span class="pull-right p-l-xs">08:25:08</span>
+							<span class="ellipsis" [style.max-width.px]="150">浙江杭州浙江杭州江南皮革厂</span>
+						</div>
+						<div class="user">
+							<i class="pull-right fa fa-chevron-right arrow-right"></i>
+							<p>
+								<span>黄鹤</span>
+								<span class="m-l-xs">137XXXX0808</span>
+							</p>
+							<p>拨打时间：下午</p>
+						</div>
+						<div class="list-oprate">
+							<a href="javascript:;"><i class="fa fa-edit"></i></a>
+							<a class="m-l-xs" href="javascript:;"><i class="fa fa-share-alt"></i></a>
+							<a class="m-l-xs" href="javascript:;"><i class="fa fa-heart-o"></i></a>
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="list-item">
+				<a class="flex" [routerLink]=" ['./detail','45']">
+					<div class="list-left">
+						<div class="flex flex-middle"><i class="fa fa-picture-o" style="color:#fff;" [style.font-size.px]="32"></i></div>
+					</div>
+					
+					<div class="flex-item1">
+						<div class="p-b-sm">
+							<span class="pull-right p-l-xs">08:25:08</span>
+							<span class="ellipsis" [style.max-width.px]="150">浙江杭州浙江杭州江南皮革厂</span>
+						</div>
+						<div class="user">
+							<i class="pull-right fa fa-chevron-right arrow-right"></i>
+							<p>
+								<span>黄鹤</span>
+								<span class="m-l-xs">137XXXX0808</span>
+							</p>
+							<p>拨打时间：下午</p>
+						</div>
+						<div class="list-oprate">
+							<a href="javascript:;"><i class="fa fa-edit"></i></a>
+							<a class="m-l-xs" href="javascript:;"><i class="fa fa-share-alt"></i></a>
+							<a class="m-l-xs" href="javascript:;"><i class="fa fa-heart-o"></i></a>
+						</div>
+					</div>
+				</a>
+			</li>
+
+		</ul>
+	</div>
+</div>
+<div class="modal hide fade" dhb-modal [toggle]="showModal" (click)="toggleModal()">
+    <div stop-bubble class="modal-content" [style.width.%]="90">
+        <div class="modal-header">
+            <a class="modal-close" href="javascript:;" (click)="toggleModal()">×</a>
+            <h4 class="modal-title">添加评论</h4>
+        </div>
+        <div class="modal-body">
+            <div [style.padding]="'20px'">
+            	<textarea rows="5"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer text-right">
+            <button type="button" class="btn btn-info m-r-sm" [disabled]="isSubmit">确定</button>
+            <button type="button" class="btn btn-default" (click)="toggleModal()">取消</button>
+        </div>
+    </div>
+</div>
+<div>
+	<router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
+</div>
