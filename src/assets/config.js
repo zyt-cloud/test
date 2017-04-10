@@ -1,6 +1,6 @@
 // 全局接口配置对象 方便配置
 window.__config = {
-  DEV_API: 'http://manager.new-dhb.com/',
-  PROD_API: 'http://manager.newdhb.com/',
-  UPLOADER_API: 'http://manager.newdhb.com/'
+  DEV_API: 'http://122.225.204.109:9000/',
+  PROD_API: 'http://122.225.204.109:9000/',
+  UPLOADER_API: 'http://122.225.204.109:9000/'
 };

@@ -1,4 +1,4 @@
-<div class="detail" [@flyInOut]="'in'" style="position: absolute;width: 100%;top: 0;">
+<div class="detail" [@flyInOut]="state" style="position: absolute;width: 100%;top: 0;">
 	<header class="flex border-bottom">
 		<a href="javascript:;" page-back><i class="fa fa-angle-left back-icon"></i></a>
 		<div class="text-center flex-item1">听音明细</div>
@@ -43,14 +43,14 @@
 	<div class="player-wrap">
 		<div class="voice flex flex-middle">
 			<div class="voice-minus">
-				<i class="fa fa-volume-down"></i>
+				<i class="fa fa-volume-down" (click)="volumeCtrl('minus')"></i>
 			</div>
 			<div class="voice-bar flex-item1">
-				<div></div>
-				<a href="javascript:;"></a>
+				<div [style.width.%]="volumePercent"></div>
+				<a href="javascript:;" [style.left.%]="volumePercent" style="margin-left: -2px;"></a>
 			</div>
 			<div class="voice-plus">
-				<i class="fa fa-volume-up"></i>
+				<i class="fa fa-volume-up" (click)="volumeCtrl('plus')"></i>
 			</div>
 		</div>
 		<div class="flex flex-middle">
@@ -59,14 +59,18 @@
 			</div>
 			<div class="flex-item1 text-center">
 				<div>
-					<i class="fa fa-step-backward"></i>
-					<i class="m-l-lg fa fa-play"></i>
-					<i class="m-l-lg fa fa-step-forward"></i>
+					<i class="fa fa-step-backward" (click)="Prev()"></i>
+					<i class="m-l-lg fa" [ngClass]="{'fa-play':PlayData().IsPlaying,'fa-pause': !PlayData().IsPlaying}" (click)="Toggle()"></i>
+					<i class="m-l-lg fa fa-step-forward"(click)="Next()"></i>
 				</div>
 			</div>
 			<div>
 				<i class="fa fa-bookmark"></i>
 			</div>
+		</div>
+		<div class="voice-bar" [ngStyle]="{'margin-top':'30px'}" (click)="Skip($event)">
+			<div [ngStyle]="{'width': PlayData().Current / PlayData().During * 100 + '%'}"></div>
+			<a href="javascript:;" [ngStyle]="{'left': PlayData().Current / PlayData().During * 100 + '%','margin-left':'-2px'}"></a>
 		</div>
 	</div>
 	
