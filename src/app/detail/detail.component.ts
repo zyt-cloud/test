@@ -140,7 +140,7 @@ export class DetailComponent {
    * 3.列表中存在此音频且在播放则暂停
    * @param audio
    */
-  public Toggle(audio): void {
+  public Toggle(audio?): void {
       let tryGet = audio ?
           this.playList.findIndex((p: any) => p.Url === audio.Url) :
           this.playData.Index;
