@@ -60,7 +60,7 @@
 			<div class="flex-item1 text-center">
 				<div>
 					<i class="fa fa-step-backward" (click)="Prev()"></i>
-					<i class="m-l-lg fa" [ngClass]="{'fa-play':PlayData().IsPlaying,'fa-pause': !PlayData().IsPlaying}" (click)="Toggle()"></i>
+					<i class="m-l-lg fa" [ngClass]="{'fa-play':!PlayData().IsPlaying,'fa-pause': PlayData().IsPlaying}" (click)="Toggle()"></i>
 					<i class="m-l-lg fa fa-step-forward"(click)="Next()"></i>
 				</div>
 			</div>
