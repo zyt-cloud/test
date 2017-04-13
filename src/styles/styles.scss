@@ -6,10 +6,10 @@ $fontSize12: 12px;
 
 @import 'normalize';
 
-/*html{
-    height: 100%;
+html{
+    /*height: 100%;*/
     font-size: 62.5%;
-}*/
+}
 body{
     color: #58666e;
     font: 13px Microsoft YaHei,SimSun,Arial;
@@ -53,6 +53,17 @@ input{height:30px;line-height: 30px;line-height: normal;line-height: 22px\9;outl
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+.msg{
+  position: fixed;
+  max-width: 84%;
+  bottom: 8rem;
+  padding: 10px 12px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  border-radius: 5px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, .8);
 }
 .set-disabled{
   opacity: .4;

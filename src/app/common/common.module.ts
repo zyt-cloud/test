@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 // 页面回退指令
 import {BackDirective} from './back.directive';
 
@@ -26,6 +26,8 @@ import {PaginationComponent} from './pagination.component';
     CommonModule
   ],
   exports: [
+      CommonModule,
+      FormsModule,
       DHBModalDirective,
       BackDirective,
       StopBubbleDirective,

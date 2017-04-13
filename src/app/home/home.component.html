@@ -134,6 +134,7 @@
         </div>
     </div>
 </div>
+<div class="msg" [class.hide]="!showMsg">{{message}}</div>
 <div>
 	<router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
 </div>
