@@ -21,10 +21,11 @@ export class HomeComponent {
 	message;
 	showMsg = false;
 	msgTime = 3000;
+	isSubmit = false;
 
 	params = {
 		user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
-		kw: '',
+		key: '',
 		offset: 1,
 		max: 5
 	};
@@ -35,12 +36,13 @@ export class HomeComponent {
 
 	ngOnInit(){
 		this.getList();
+		this.getList1();
 	}
 
 	clear(){
 		this.params = {
 			user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
-			kw: '',
+			key: '公司',
 			offset: 1,
 			max: 5
 		};
@@ -48,6 +50,21 @@ export class HomeComponent {
 
 	getList(){
 		this.http.getData(this.getListApi, this.params)
+
+	    .then((res) => {
+	        console.log(res)
+
+	    })
+	    .catch(res => {
+	    	console.log('error:' + res)
+	    	this.message = '获取数据失败';
+	    	this.showMsg = true;
+
+	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
+	    });
+	}
+	getList1(){
+		this.http.saveData(this.getListApi, this.params)
 
 	    .then((res) => {
 	        console.log(res)

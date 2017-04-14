@@ -123,7 +123,7 @@ export class HttpService {
     $('#loading').removeClass('hide');
 
     return this.http
-      .get(url ,{search: params,withCredentials: true})
+      .get(url ,{search: params/*,withCredentials: true*/})
       .toPromise()
       .then(response => {
         $('#loading').addClass('hide');
