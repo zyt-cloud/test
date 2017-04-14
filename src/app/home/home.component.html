@@ -1,4 +1,4 @@
-<div class="home" >
+<div class="home" [class.hide]="toChild">
 	<header class="flex border-bottom">
 		<a href="javascript:;"></a>
 		<div class="text-center flex-item1">系统听音</div>
@@ -31,28 +31,28 @@
 	<div [style.padding-top.px]="150">
 		<div class="list-time border-bottom">2017-12-12</div>
 		<ul class="list">
-			<li class="list-item">
-				<a class="flex" [routerLink]=" ['./detail','45']">
+			<li class="list-item" *ngFor="let item of list; let i = index">
+				<a class="flex" [routerLink]=" ['./detail',item.id]">
 					<div class="list-left">
 						<div class="flex flex-middle"><i class="fa fa-picture-o" style="color:#fff;" [style.font-size.px]="32"></i></div>
 					</div>
 					
 					<div class="flex-item1">
 						<div class="p-b-sm">
-							<span class="pull-right p-l-xs">08:25:08</span>
-							<span class="ellipsis" [style.max-width.px]="150">浙江杭州浙江杭州江南皮革厂</span>
+							<span class="pull-right p-l-xs">{{item.callLength | myTime}}</span>
+							<span class="overflow-h ellipsis">{{item.accountName}}</span>
 						</div>
 						<div class="user">
 							<i class="pull-right fa fa-chevron-right arrow-right"></i>
 							<p>
-								<span>黄鹤</span>
-								<span class="m-l-xs">137XXXX0808</span>
+								<span>{{item.contactName}}</span>
+								<span class="m-l-xs">{{item.phoneNum}}</span>
 							</p>
-							<p>拨打时间：下午</p>
+							<p>拨打时间：{{item.dialTime}}</p>
 						</div>
 						<div class="list-oprate">
 							<a href="javascript:;" (click)="toggleModal($event)"><i class="fa fa-edit"></i></a>
-							<a class="m-l-xs" href="javascript:;"><i class="fa fa-share-alt"></i></a>
+							<!-- <a class="m-l-xs" href="javascript:;"><i class="fa fa-share-alt"></i></a> -->
 							<a class="m-l-xs" href="javascript:;"><i class="fa fa-heart-o"></i></a>
 						</div>
 					</div>

@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { transition, style, animate, state, trigger } from '@angular/animations';
+// import { transition, style, animate, state, trigger } from '@angular/animations';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { HttpService } from '../app.service';
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/switchMap';
   selector: 'detail',  // <home></home>
 
   templateUrl: './detail.component.html',
-  animations: [
+  /*animations: [
     trigger('flyInOut', [
       state('in', style({transform: 'translateX(0)'})),
       //state('out', style({transform: 'translateX(100%)'})),
@@ -25,7 +25,7 @@ import 'rxjs/add/operator/switchMap';
         //animate(300, style({transform: 'translateX(-50%)'}))
       ])
     ])
-  ]
+  ]*/
 })
 export class DetailComponent {
 

@@ -13,6 +13,8 @@ import {StopBubbleDirective} from './stop-bubble.directive';
 // 分页组件
 import {PaginationComponent} from './pagination.component';
 
+import {TimePipe} from './time.pipe';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import {PaginationComponent} from './pagination.component';
       BackDirective,
       DHBModalDirective,
       StopBubbleDirective,
+      TimePipe,
       PaginationComponent
   ],
   imports: [
@@ -31,6 +34,7 @@ import {PaginationComponent} from './pagination.component';
       DHBModalDirective,
       BackDirective,
       StopBubbleDirective,
+      TimePipe,
       PaginationComponent
   ]
 })

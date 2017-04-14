@@ -14,7 +14,8 @@ import {HttpService} from '../app.service';
 })
 export class HomeComponent {
 
-	private getListApi = 'avaya/play'; //recordings/search';
+	//private getListApi = 'avaya/play'; //recordings/search';
+	private getListApi = 'recordings/search';
 
 	toChild = false;
 	showModal = false;
@@ -22,6 +23,7 @@ export class HomeComponent {
 	showMsg = false;
 	msgTime = 3000;
 	isSubmit = false;
+	list;
 
 	params = {
 		user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
@@ -36,45 +38,30 @@ export class HomeComponent {
 
 	ngOnInit(){
 		this.getList();
-		this.getList1();
 	}
 
 	clear(){
 		this.params = {
 			user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
-			key: '公司',
+			key: '',
 			offset: 1,
 			max: 5
 		};
 	}
 
+
 	getList(){
-		this.http.getData(this.getListApi, {id: 'HZ-20170103_105844_10.20.6.12_10.20.0.43_259'})
+		this.http.getData(this.getListApi, this.params)
 
 	    .then((res) => {
-	        console.log(res)
+	        this.list = res
 
 	    })
 	    .catch(res => {
 	    	console.log('error:' + res)
 	    	this.message = '获取数据失败';
 	    	this.showMsg = true;
-
-	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
-	    });
-	}
-	getList1(){
-		this.http.saveData(this.getListApi, {id: 'HZ-20170103_105844_10.20.6.12_10.20.0.43_259'})
-
-	    .then((res) => {
-	        console.log(res)
-
-	    })
-	    .catch(res => {
-	    	console.log('error:' + res)
-	    	this.message = '获取数据失败';
-	    	this.showMsg = true;
-
+	    	//this.ref.
 	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
 	    });
 	}
