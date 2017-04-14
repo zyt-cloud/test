@@ -5,6 +5,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { HttpService } from '../app.service';
 
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 
 @Component({
 
@@ -28,8 +29,6 @@ import 'rxjs/add/operator/switchMap';
   ]*/
 })
 export class DetailComponent {
-
-  state = 'in';
 
 
 
@@ -106,11 +105,13 @@ export class DetailComponent {
     })
     .subscribe(hero => {});
 
-    this.getObj();
+    console.log(this.route.snapshot.params['accountId']);
+
+    this.getDetail();
     this.Add({Url: 'http://122.225.204.109:9000/avaya/play?id=HZ-20170103_105844_10.20.6.12_10.20.0.43_259'});
   }
 
-  getObj(){
+  getDetail(){
     //this.http.getData(this.getAudioUrl)
   }
   ngOnDestroy(){

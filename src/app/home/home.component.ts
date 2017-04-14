@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { transition, style, animate, state, trigger } from '@angular/animations';
+// import { transition, style, animate, state, trigger } from '@angular/animations';
 
 import {HttpService} from '../app.service';
 
@@ -7,10 +7,7 @@ import {HttpService} from '../app.service';
 
   selector: 'home',  // <home></home>
 
-  templateUrl: './home.component.html',
-  animations: [
-
-  ]
+  templateUrl: './home.component.html'
 })
 export class HomeComponent {
 
