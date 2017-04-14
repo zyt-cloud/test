@@ -14,7 +14,7 @@ import {HttpService} from '../app.service';
 })
 export class HomeComponent {
 
-	private getListApi = 'recordings/search';
+	private getListApi = 'avaya/play'; //recordings/search';
 
 	toChild = false;
 	showModal = false;
@@ -49,7 +49,7 @@ export class HomeComponent {
 	}
 
 	getList(){
-		this.http.getData(this.getListApi, this.params)
+		this.http.getData(this.getListApi, {id: 'HZ-20170103_105844_10.20.6.12_10.20.0.43_259'})
 
 	    .then((res) => {
 	        console.log(res)
@@ -64,7 +64,7 @@ export class HomeComponent {
 	    });
 	}
 	getList1(){
-		this.http.saveData(this.getListApi, this.params)
+		this.http.saveData(this.getListApi, {id: 'HZ-20170103_105844_10.20.6.12_10.20.0.43_259'})
 
 	    .then((res) => {
 	        console.log(res)
