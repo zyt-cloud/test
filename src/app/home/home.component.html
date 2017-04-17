@@ -83,7 +83,7 @@
 <div class="modal" [class.hide]="!showSearch" (click)="toggleSearch()">
 	<div stop-bubble class="search-wrap flex">
 		<!-- 请输入客户名称 -->
-		<input class="flex-item1" type="text" placeholder="" [(ngModel)]="searchText">
+		<input class="flex-item1" type="text" placeholder="" (keyup.enter)="search()" [(ngModel)]="searchText">
 		<button type="button" class="m-l-sm btn btn-default" (click)="search()">搜索</button>
 	</div>
 </div>
