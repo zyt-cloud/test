@@ -7,7 +7,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({name: 'myTime'})
 export class TimePipe implements PipeTransform {
     transform(value: any, args: string[]): any {
-        
+    	
+        if(!value) return '';
+
         let time = parseInt(value);
 
         let h = Math.floor(time / 3600);

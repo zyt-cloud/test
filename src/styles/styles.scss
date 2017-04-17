@@ -7,10 +7,11 @@ $fontSize12: 12px;
 @import 'normalize';
 
 html{
-    /*height: 100%;*/
+    height: 100%;
     font-size: 62.5%;
 }
 body{
+    height: 100%;
     color: #58666e;
     font: 13px Microsoft YaHei,SimSun,Arial;
     background-color: #fff;
@@ -566,6 +567,13 @@ textarea.form-control {
     transition: width .6s ease;
 }
 
+.scroll{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    bottom: 0;
+    overflow: auto;
+}
 .flex {
     display: -webkit-box;
     display: -webkit-flex;

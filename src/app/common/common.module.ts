@@ -16,6 +16,7 @@ import {PaginationComponent} from './pagination.component';
 import {TimePipe} from './time.pipe';
 import {DateTimePipe} from './datetime.pipe';
 
+import {ScrollDirective} from './scroll.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {DateTimePipe} from './datetime.pipe';
       StopBubbleDirective,
       TimePipe,
       DateTimePipe,
+      ScrollDirective,
       PaginationComponent
   ],
   imports: [
@@ -38,6 +40,7 @@ import {DateTimePipe} from './datetime.pipe';
       StopBubbleDirective,
       TimePipe,
       DateTimePipe,
+      ScrollDirective,
       PaginationComponent
   ]
 })
