@@ -30,7 +30,15 @@ import 'rxjs/add/operator/map';
 })
 export class DetailComponent {
 
+  private getDetailApi = 'account/';
+  private getCallApi = 'recordings/search';
 
+  message;
+  showMsg = false;
+  msgTime = 3000;
+  detail = {};
+  list;
+  currCall;
 
   // 主音频标签
   private _audio: HTMLAudioElement;
@@ -41,6 +49,7 @@ export class DetailComponent {
   private listenInterval: any;
 
   public volumePercent = 60;
+
   /**
    * 创建新的音频标签到body下
    */
@@ -98,21 +107,62 @@ export class DetailComponent {
 
   ngOnInit(): void {
 
-    this.route.params
+    let accountId = this.route.snapshot.params['accountId'];
+
+    /*this.route.params
     .switchMap((params: Params) => {
       console.log(params['id']);
       return [{}]//;this.http.getData(params['id'])
     })
-    .subscribe(hero => {});
+    .subscribe(hero => {});*/
 
     console.log(this.route.snapshot.params['accountId']);
 
-    this.getDetail();
-    this.Add({Url: 'http://122.225.204.109:9000/avaya/play?id=HZ-20170103_105844_10.20.6.12_10.20.0.43_259'});
+    this.getDetail(accountId);
+
+    this.getCallList(accountId);
   }
 
-  getDetail(){
-    //this.http.getData(this.getAudioUrl)
+  getCallList(id){
+    this.http.getData(this.getCallApi, {account: id})
+
+      .then((res) => {
+          this.list = res;
+
+          this.addMedia()
+      })
+      .catch(res => {
+        this.message = '获取拨打记录失败';
+        this.showMsg = true;
+        //this.ref.
+        setTimeout(() => {this.showMsg = false; }, this.msgTime);
+      });
+  }
+
+  addMedia(){
+    if(this.list && this.list.length > 0){
+      this.currCall = this.list[0];
+      this.list.forEach((item) => {
+        this.Add({Url: window['__config']['MEDIA_API'] + 'avaya/play?id=' + item.mediaId});
+      });
+      
+    }
+  }
+
+  getDetail(params){
+    this.http.getData(this.getDetailApi + params)
+
+      .then((res) => {
+          console.log(res)
+          this.detail = res;
+      })
+      .catch(res => {
+        console.log('error:' + res)
+        this.message = '获取客户明细失败';
+        this.showMsg = true;
+        //this.ref.
+        setTimeout(() => {this.showMsg = false; }, this.msgTime);
+      });
   }
   ngOnDestroy(){
     //this.state = 'out';

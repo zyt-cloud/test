@@ -4,7 +4,7 @@
 		<div class="text-center flex-item1">系统听音</div>
 		<a href="javascript:;"></a>
 	</header>
-	<nav class="home-nav">
+	<nav class="home-nav border-bottom">
 		<ul class="display-table">
 			<li class="p-l-md">
 				<div><i class="fa fa-home"></i></div>
@@ -16,19 +16,19 @@
 					<div>收藏</div>
 				</a>
 			</li>
-			<li class="text-right">
+			<li class="text-right" (click)="toggleSearch()">
 				<div><i class="fa fa-search"></i></div>
 			</li>
 		</ul>
-		<div class="home-search border-bottom">
+		<!-- <div class="home-search border-bottom">
 			<div>
                 <label class="m-r-md i-checks"><input class="icon-radio" checked name="type" type="radio"><i class="radio-unchecked"></i><span class="m-l-xs">所有录音</span></label>
                 <label [routerLink]=" ['/calling']" class="m-r-md i-checks"><input class="icon-radio" name="type" type="radio"><i class="radio-unchecked"></i><span class="m-l-xs">主叫</span></label>
                 <label [routerLink]=" ['/called']" class="m-r-md i-checks"><input class="icon-radio" name="type" type="radio"><i class="radio-unchecked"></i><span class="m-l-xs">被叫</span></label>
             </div>
-		</div>
+		</div> -->
 	</nav>
-	<div [style.padding-top.px]="150">
+	<div [style.padding-top.px]="100">
 		<div class="list-time border-bottom">2017-12-12</div>
 		<ul class="list">
 			<li class="list-item" *ngFor="let item of list; let i = index">
@@ -48,7 +48,7 @@
 								<span>{{item.contactName}}</span>
 								<span class="m-l-xs">{{item.phoneNum}}</span>
 							</p>
-							<p>拨打时间：{{item.dialTime | date:'fullDate'}}</p>
+							<p>拨打时间：{{item.dialTime | datetime}}</p>
 						</div>
 						<div class="list-oprate">
 							<a href="javascript:;" (click)="toggleModal($event)"><i class="fa fa-edit"></i></a>
@@ -89,7 +89,7 @@
 	</div>
 	
 </div>
-<div class="modal hide fade" dhb-modal [toggle]="showModal" (click)="toggleModal()">
+<div class="modal fade" dhb-modal [toggle]="showModal" (click)="toggleModal()">
     <div stop-bubble class="modal-content" [style.width.%]="90">
         <div class="modal-header">
             <a class="modal-close" href="javascript:;" (click)="toggleModal()">×</a>
@@ -107,6 +107,13 @@
     </div>
 </div>
 <div class="msg" [class.hide]="!showMsg">{{message}}</div>
+<div class="modal" [class.hide]="!showSearch" (click)="toggleSearch()">
+	<div stop-bubble class="search-wrap flex">
+		<!-- 请输入客户名称 -->
+		<input class="flex-item1" type="text" placeholder="" [(ngModel)]="searchText">
+		<button type="button" class="m-l-sm btn btn-default" (click)="search()">搜索</button>
+	</div>
+</div>
 <div>
 	<router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
 </div>

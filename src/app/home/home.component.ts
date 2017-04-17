@@ -21,9 +21,11 @@ export class HomeComponent {
 	msgTime = 3000;
 	isSubmit = false;
 	list;
+	showSearch = false;
+	searchText = '';
 
 	params = {
-		user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
+		//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 		key: '',
 		offset: 1,
 		max: 5
@@ -39,19 +41,19 @@ export class HomeComponent {
 
 	clear(){
 		this.params = {
-			user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
+			//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 			key: '',
 			offset: 1,
 			max: 5
 		};
 	}
 
-
+	// 获取列表
 	getList(){
 		this.http.getData(this.getListApi, this.params)
 
 	    .then((res) => {
-	        this.list = res
+	        this.list = res;
 
 	    })
 	    .catch(res => {
@@ -63,9 +65,23 @@ export class HomeComponent {
 	    });
 	}
 
+	// 评论框
 	toggleModal(e?){
 		e && e.stopPropagation();
 	    this.showModal = !this.showModal;
+	}
+
+	search(){
+		this.showSearch = false;
+		this.clear();
+		this.params.key = this.searchText;
+		this.getList();
+
+	}
+
+	// 搜索
+	toggleSearch(){
+		this.showSearch = !this.showSearch;
 	}
 
 	onActivate(e){

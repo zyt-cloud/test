@@ -733,7 +733,7 @@ header > a{
 }
 .voice-bar > div{
     float: left;
-    width: 102px;
+    /*width: 102px;*/
     height: 100%;
     font-size: 12px;
     line-height: 20px;
@@ -749,11 +749,12 @@ header > a{
 }
 .voice-bar > a{
   position: absolute;
-  left: 100px;
+  /*left: 100px;*/
   border-radius: 50%;
   border: 6px solid #d9534f;
   width: 20px;
   height: 20px;
+  margin-left: -2px;
   top: -5px;
   overflow: hidden;
   -webkit-transition: left .6s ease;

@@ -1,0 +1,18 @@
+.search-wrap{
+	width: 84%;
+	padding-top: 20px;
+	margin: auto;
+	
+	color: #fff;
+
+}
+.search-wrap > input{
+	width: 100%;
+	border: 0;
+	outline: none;
+	background: transparent;
+	border-bottom: 1px solid #fff;
+}
+.search-wrap > .btn{
+	min-width: auto;
+}

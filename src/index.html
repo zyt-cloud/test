@@ -22,7 +22,15 @@
   <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
 
   <!-- base url -->
-  <base href="/">
+  <base href="./">
+  <script>
+    var url = window.location.href;
+    var params = url.substring(url.indexOf('user/')) || [];
+    var user = params.split('/')[1] || 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD';
+
+    window.sessionStorage.setItem('user', user)
+
+  </script>
 
   <script src="assets/config.js"></script>
 </head>

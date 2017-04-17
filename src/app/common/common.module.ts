@@ -14,6 +14,7 @@ import {StopBubbleDirective} from './stop-bubble.directive';
 import {PaginationComponent} from './pagination.component';
 
 import {TimePipe} from './time.pipe';
+import {DateTimePipe} from './datetime.pipe';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {TimePipe} from './time.pipe';
       DHBModalDirective,
       StopBubbleDirective,
       TimePipe,
+      DateTimePipe,
       PaginationComponent
   ],
   imports: [
@@ -35,6 +37,7 @@ import {TimePipe} from './time.pipe';
       BackDirective,
       StopBubbleDirective,
       TimePipe,
+      DateTimePipe,
       PaginationComponent
   ]
 })

@@ -120,10 +120,17 @@ export class HttpService {
       }
     }
 
+    params.set('user', window.sessionStorage.getItem('user'));
+
+    // 测试代理
+    if(window.location.protocol === 'https:'){
+      url = 'https://bird.ioliu.cn/v1/?url=' + url;
+    }
+
     $('#loading').removeClass('hide');
 
     return this.http
-      .get(url ,{search: params/*,withCredentials: true*/})
+      .get(url ,{search: params/*,withCredentials: true*/,body: {name:'zhangsan'}})
       .toPromise()
       .then(response => {
         $('#loading').addClass('hide');
@@ -145,10 +152,12 @@ export class HttpService {
       }
     }
     
+    params.set('user', window.sessionStorage.getItem('user'));
+
     $('#loading').removeClass('hide');
 
     return this.http
-      .post(url, params, {headers: this.headers,withCredentials: true})
+      .post(url, params, {headers: this.headers/*,withCredentials: true*/})
       .toPromise()
       .then(res => {
         $('#loading').addClass('hide');

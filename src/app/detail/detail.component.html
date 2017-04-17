@@ -5,37 +5,34 @@
 		<a href="javascript:;"></a>
 	</header>
 	<div [style.padding-top.px]="50">
+
 		<div class="detial-block">
-			<h3>黄鹤</h3>
-			<p><i class="fa fa-phone"></i><span class="m-l-sm">13882458999</span></p>
+			<h3>{{detail['name']}}</h3>
+			<ng-template>
+				<p>双轴胶带复卷机|单轴胶带复卷机|胶带分条机。浙江义乌市上溪工业园区四通路102号</p>
+				<p>2016年有效沟通次数: 2次</p>
+				<p>出口趋势：全球356272 ↑↑ 土耳其49000 ↑↑</p>
+				<p>出口规模 ：全球小型企业 |土耳其小型企业 </p>
+				<p>其他核心信息：中小开</p>
+			</ng-template>
+		</div>
+
+		<div class="detial-block">
+			<h3>{{currCall?.contactName}}</h3>
+			<p><i class="fa fa-phone"></i><span class="m-l-sm">{{currCall?.phoneNum}}</span></p>
 			<p>
-				<span>2017年1月11日 10:25:03</span>
+				<span>{{currCall?.dialTime | datetime}}</span>
 				<span class="m-l-md">
-					<i class="fa fa-clock-o"></i><span class="m-l-xs">01:42</span>
+					<i class="fa fa-clock-o"></i><span class="m-l-xs">{{currCall?.callLength | myTime}}</span>
 				</span>
 			</p>
 		</div>
-		<div class="detial-block">
-			<h3>浙江钜业机械设备有限公司</h3>
-			<p>双轴胶带复卷机|单轴胶带复卷机|胶带分条机。浙江义乌市上溪工业园区四通路102号</p>
-			<p>2016年有效沟通次数: 2次</p>
-			<p>出口趋势：全球356272 ↑↑ 土耳其49000 ↑↑</p>
-			<p>出口规模 ：全球小型企业 |土耳其小型企业 </p>
-			<p>其他核心信息：中小开</p>
-		</div>
+		
 		<div class="detial-block">
 			<ul class="msg-list">
-				<li>
-					<h4><span>丁超</span><span>2017/1/12</span><i class="pull-right fa fa-volume-up"></i></h4>
-					<p>最近都比较忙不在余姚，王助理会在的，约下王助理。</p>
-				</li>
-				<li>
-					<h4><span>丁超</span><span>2017/1/12</span><i class="pull-right fa fa-volume-up"></i></h4>
-					<p>最近都比较忙不在余姚，王助理会在的，约下王助理。</p>
-				</li>
-				<li>
-					<h4><span>丁超</span><span>2017/1/12</span><i class="pull-right fa fa-volume-up"></i></h4>
-					<p>告知他余姚的补贴已经在下放了。然后推了一下明年的项目，现在在装柜有点忙，晚点再联系。</p>
+				<li *ngFor="let item of list; let i = index">
+					<h4><span>{{item.contactName}}</span><span class="m-l-xs">{{item.dialTime | date:'yyyy/MM/dd'}}</span><i class="pull-right fa fa-volume-up"></i></h4>
+					<p>{{item.description}}</p>
 				</li>
 			</ul>
 		</div>
@@ -47,7 +44,7 @@
 			</div>
 			<div class="voice-bar flex-item1">
 				<div [style.width.%]="volumePercent"></div>
-				<a href="javascript:;" [style.left.%]="volumePercent" style="margin-left: -2px;"></a>
+				<a href="javascript:;" [style.left.%]="volumePercent"></a>
 			</div>
 			<div class="voice-plus">
 				<i class="fa fa-volume-up" (click)="volumeCtrl('plus')"></i>
@@ -70,8 +67,9 @@
 		</div>
 		<div class="voice-bar" [ngStyle]="{'margin-top':'30px'}" (click)="Skip($event)">
 			<div [ngStyle]="{'width': PlayData().Current / PlayData().During * 100 + '%'}"></div>
-			<a href="javascript:;" [ngStyle]="{'left': PlayData().Current / PlayData().During * 100 + '%','margin-left':'-2px'}"></a>
+			<a href="javascript:;" [ngStyle]="{'left': PlayData().Current / PlayData().During * 100 + '%'}"></a>
 		</div>
 	</div>
 	
 </div>
+<div class="msg" [class.hide]="!showMsg">{{message}}</div>

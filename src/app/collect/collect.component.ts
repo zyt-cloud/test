@@ -23,7 +23,7 @@ export class CollectComponent {
 	list;
 
 	params = {
-		user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
+		//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 		key: '',
 		offset: 1,
 		max: 5
@@ -39,7 +39,7 @@ export class CollectComponent {
 
 	clear(){
 		this.params = {
-			user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
+			//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 			key: '',
 			offset: 1,
 			max: 5
