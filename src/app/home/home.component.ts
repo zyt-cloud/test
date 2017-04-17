@@ -48,6 +48,7 @@ export class HomeComponent {
 			offset: 1,
 			max: 5
 		};
+		this.list = null;
 	}
 
 	// 获取列表
