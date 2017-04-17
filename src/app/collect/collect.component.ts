@@ -22,9 +22,12 @@ export class CollectComponent {
 	isSubmit = false;
 	list;
 
+	isMore = false;
+
 	params = {
 		//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 		key: '',
+		fav: true,
 		offset: 1,
 		max: 5
 	};
@@ -41,9 +44,11 @@ export class CollectComponent {
 		this.params = {
 			//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 			key: '',
+			fav: true,
 			offset: 1,
 			max: 5
 		};
+		this.list = null;
 	}
 
 
@@ -51,16 +56,28 @@ export class CollectComponent {
 		this.http.getData(this.getListApi, this.params)
 
 	    .then((res) => {
-	        this.list = res
-
+	        if(res && res.length > 0){
+	    		this.isMore = true;
+	    		this.list = this.list ? this.list.concat(res) : res;
+	    	}
+	        else{
+	        	this.isMore = false;
+	        }
 	    })
 	    .catch(res => {
-	    	console.log('error:' + res)
 	    	this.message = '获取数据失败';
 	    	this.showMsg = true;
 	    	//this.ref.
 	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
 	    });
+	}
+
+	loadMore(){
+		if(this.isMore){
+			this.params.offset++;
+			this.getList();
+		}
+		
 	}
 
 	toggleModal(e?){

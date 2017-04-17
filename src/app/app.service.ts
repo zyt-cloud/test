@@ -98,7 +98,7 @@ export class HttpService {
   //private headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
   //Content-Type:application/x-www-form-urlencoded
   //, 'Cookies': 'gr_user_id=344cc632-390c-4d56-9f12-78be78173543; gr_session_id_b9c76468acc54288bfd0292976a2514d=4b12b070-ce1f-47c2-b399-180addf9de55; session_id=h1e0jjqrcr0q0g396k5vlmro26; accounts_name=whm123; autologin=false'
-  private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+  private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'});
 
   constructor(private http: Http){
     /*c.put('session_id', 'uia8vnuv8p7vru9rsfvv948b32')*/
@@ -130,7 +130,7 @@ export class HttpService {
     $('#loading').removeClass('hide');
 
     return this.http
-      .get(url ,{search: params/*,withCredentials: true*/,body: {name:'zhangsan'}})
+      .get(url ,{search: params,/*withCredentials: true*/headers: this.headers})
       .toPromise()
       .then(response => {
         $('#loading').addClass('hide');

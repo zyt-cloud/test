@@ -615,7 +615,10 @@ textarea.form-control {
 .padder{
   padding: 3% 4%;
 }
-
+.more{
+  line-height: 40px;
+  text-align: center;
+}
 header, .home-nav{
   position: fixed;
   z-index: 2;
@@ -666,6 +669,9 @@ header > a{
   border-bottom: 1px solid #dee5e7;
   line-height: 22px;
 }
+.list-item:last-child{
+  margin-bottom: 0;
+}
 .list-item:first-child{
   border-top: none;
 }
@@ -708,6 +714,11 @@ header > a{
 }
 .detial-block:first-child{
   border-top: none;
+}
+.more-voice{
+  float: right;
+  font-size: 14px;
+  font-weight: 400;
 }
 .detial-block > p{
   margin-bottom: 2%;

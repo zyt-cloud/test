@@ -39,6 +39,7 @@ export class DetailComponent {
   detail = {};
   list;
   currCall;
+  public showMore: boolean = false;
 
   // 主音频标签
   private _audio: HTMLAudioElement;
@@ -120,7 +121,7 @@ export class DetailComponent {
 
     this.getDetail(accountId);
 
-    this.getCallList(accountId);
+    this.getCallList(/*accountId*/'70D31F5C-C89D-4C81-8BD1-0384E9D6CE91');
   }
 
   getCallList(id){
@@ -147,6 +148,10 @@ export class DetailComponent {
       });
       
     }
+  }
+
+  toggleMore(){
+    this.showMore = !this.showMore;
   }
 
   getDetail(params){

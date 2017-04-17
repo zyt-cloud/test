@@ -27,7 +27,8 @@ export class ScrollDirective {
     	this.$elem.scroll((e) => {
 
             let elem = e.target;
-            if(elem.scrollTop >= (elem.scrollHeight - elem.offsetHeight)){
+
+            if(elem.scrollTop + 2 >= (elem.scrollHeight - elem.offsetHeight)){
                 this.loadMore.emit();
             }
         });

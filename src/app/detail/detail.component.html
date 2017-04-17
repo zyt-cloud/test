@@ -18,7 +18,7 @@
 		</div>
 
 		<div class="detial-block">
-			<h3>{{currCall?.contactName}}</h3>
+			<h3><span class="more-voice" (click)="toggleMore()">更多录音</span>{{currCall?.contactName}}</h3>
 			<p><i class="fa fa-phone"></i><span class="m-l-sm">{{currCall?.phoneNum}}</span></p>
 			<p>
 				<span>{{currCall?.dialTime | datetime}}</span>
@@ -28,7 +28,7 @@
 			</p>
 		</div>
 		
-		<div class="detial-block">
+		<div class="detial-block" [class.hide]="!showMore">
 			<ul class="msg-list">
 				<li *ngFor="let item of list; let i = index">
 					<h4><span>{{item.contactName}}</span><span class="m-l-xs">{{item.dialTime | date:'yyyy/MM/dd'}}</span><i class="pull-right fa fa-volume-up"></i></h4>
