@@ -24,7 +24,7 @@
   <!-- base url -->
   <base href="./">
   <script>
-    if(!window.sessionStorage.getItem('user')){
+    //if(!window.sessionStorage.getItem('user')){
       var url = window.location.href;
       //var params = url.substring(url.indexOf('user/')) || [];
       var params = window.location.search;
@@ -32,7 +32,7 @@
       var user = params ? params.substring(1) : 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD';
       
       window.sessionStorage.setItem('user', user);
-    }
+    //}
     
 
   </script>
