@@ -26,8 +26,9 @@
   <script>
     var url = window.location.href;
     //var params = url.substring(url.indexOf('user/')) || [];
-    var params = url.split('/');
-    var user = params[params.length - 1] || 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD';
+    var params = window.location.search;
+    //var user = params[params.length - 1] || 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD';
+    var user = params ? params.substring(1) : 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD';
 
     window.sessionStorage.setItem('user', user)
 
