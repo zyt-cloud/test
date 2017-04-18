@@ -30,6 +30,8 @@
     //var user = params[params.length - 1] || 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD';
     var user = params ? params.substring(1) : 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD';
 
+    user = window.sessionStorage.getItem('user') || user;
+    
     window.sessionStorage.setItem('user', user);
 
   </script>
