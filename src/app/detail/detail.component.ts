@@ -121,7 +121,7 @@ export class DetailComponent {
 
     this.getDetail(accountId);
 
-    this.getCallList(/*accountId*/'70D31F5C-C89D-4C81-8BD1-0384E9D6CE91');
+    this.getCallList(accountId/*'70D31F5C-C89D-4C81-8BD1-0384E9D6CE91'*/);
   }
 
   getCallList(id){
@@ -138,6 +138,11 @@ export class DetailComponent {
         //this.ref.
         setTimeout(() => {this.showMsg = false; }, this.msgTime);
       });
+  }
+
+  choiceVoice(index){
+    this.currCall = this.list[index];
+    this.Toggle({Url: window['__config']['MEDIA_API'] + 'avaya/play?id=' + this.currCall.mediaId})
   }
 
   addMedia(){
@@ -158,11 +163,9 @@ export class DetailComponent {
     this.http.getData(this.getDetailApi + params)
 
       .then((res) => {
-          console.log(res)
           this.detail = res;
       })
       .catch(res => {
-        console.log('error:' + res)
         this.message = '获取客户明细失败';
         this.showMsg = true;
         //this.ref.
@@ -200,6 +203,7 @@ export class DetailComponent {
       let tryGet = audio ?
           this.playList.findIndex((p: any) => p.Url === audio.Url) :
           this.playData.Index;
+      
       if (tryGet < 0) {
           this.playList.push(audio);
           this.PlayIndex(this.playList.length);
@@ -227,6 +231,7 @@ export class DetailComponent {
       this.playList.push(audio);
       if (this.playList.length === 1) {
           this.PlayIndex(0);
+          this.Toggle();
       }
   }
 
