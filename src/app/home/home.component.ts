@@ -25,6 +25,7 @@ export class HomeComponent {
 	searchText = '';
 
 	isMore = false;
+	index = -1;
 
 	params = {
 		//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
@@ -32,6 +33,7 @@ export class HomeComponent {
 		offset: 1,
 		max: 5
 	};
+	today: string;
 
 	constructor(private http: HttpService, private ref: ChangeDetectorRef,){
 	    
@@ -39,6 +41,10 @@ export class HomeComponent {
 
 	ngOnInit(){
 		this.getList();
+		let date = new Date();
+		let m = date.getMonth() + 1;
+		let d = date.getDate();
+		this.today = (date.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d));
 	}
 
 	clear(){
@@ -83,9 +89,70 @@ export class HomeComponent {
 	}
 
 	// 评论框
-	toggleModal(e?){
+	toggleModal(e?, index?){
 		e && e.stopPropagation();
+
+		if(!isNaN(index)){
+			this.index = index;
+		}
+
 	    this.showModal = !this.showModal;
+	}
+	addComment(text){
+		if(!text){
+			this.message = '请输入内容';
+	    	this.showMsg = true;
+	    	//this.ref.
+	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
+			return;
+		}
+		
+		let url = `recording/${this.list[this.index].id}/favorites`;
+		let params = {
+			text = text;
+			userId: this.list[this.index].userId,
+			userName: this.list[this.index].userName,
+			enabled: true
+		};
+		this.http.saveData(url, params)
+
+	    .then((res) => {
+	    	
+
+	    })
+	    .catch(res => {
+
+	    	this.message = '操作失败';
+	    	this.showMsg = true;
+	    	//this.ref.
+	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
+	    });
+	}
+
+	favToggle(e, index){
+		e.stopPropagation();
+
+		this.index = index;
+
+		let url = `recording/${this.list[this.index].id}/favorites`;
+		let params = {
+			userId: this.list[this.index].userId,
+			userName: this.list[this.index].userName,
+			enabled: false
+		};
+		this.http.saveData(url, params)
+
+	    .then((res) => {
+	    	
+
+	    })
+	    .catch(res => {
+
+	    	this.message = '操作失败';
+	    	this.showMsg = true;
+	    	//this.ref.
+	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
+	    });
 	}
 
 	search(){

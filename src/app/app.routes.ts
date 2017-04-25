@@ -27,7 +27,7 @@ export const ROUTES: Routes = [
         component: DetailComponent
     }]
   },
-  {
+  /*{
     path: 'calling', 
     component: CallingComponent,
     children: [{
@@ -42,7 +42,7 @@ export const ROUTES: Routes = [
         path: 'detail/:id',
         component: DetailComponent
     }]
-  },
+  },*/
   {path: 'collect', component: CollectComponent},
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },

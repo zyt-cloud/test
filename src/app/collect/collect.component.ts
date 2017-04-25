@@ -13,7 +13,8 @@ import {HttpService} from '../app.service';
 })
 export class CollectComponent {
 
-	private getListApi = 'recordings/search';
+	//private getListApi = 'recording/favorites';
+	private getListApi = 'recordings/' + window.sessionStorage.getItem('user') + '/favorites';
 
 	showModal = false;
 	message;
@@ -27,10 +28,11 @@ export class CollectComponent {
 	params = {
 		//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 		key: '',
-		fav: true,
 		offset: 1,
 		max: 5
 	};
+
+	today: string;
 
 	constructor(private http: HttpService){
 	    
@@ -38,13 +40,16 @@ export class CollectComponent {
 
 	ngOnInit(){
 		this.getList();
+		let date = new Date();
+		let m = date.getMonth() + 1;
+		let d = date.getDate();
+		this.today = (date.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d));
 	}
 
 	clear(){
 		this.params = {
 			//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 			key: '',
-			fav: true,
 			offset: 1,
 			max: 5
 		};
@@ -80,8 +85,12 @@ export class CollectComponent {
 		
 	}
 
-	toggleModal(e?){
+	toggleModal(e?, index?){
 		e && e.stopPropagation();
+
+		if(index){
+			console.log(this.list[index])
+		}
 	    this.showModal = !this.showModal;
 	}
 
