@@ -17,6 +17,7 @@ export class CollectComponent {
 	//private getListApi = 'recordings/' + window.sessionStorage.getItem('user') + '/favorites';
 
 	showModal = false;
+	toChild: boolean = false;
 	message;
 	showMsg = false;
 	msgTime = 3000;
@@ -159,6 +160,12 @@ export class CollectComponent {
 	    	//this.ref.
 	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
 	    });
+	}
+	onActivate(e){
+       this.toChild = true;
+	}
+	onDeactivate(e){
+	    this.toChild = false;
 	}
 
 }

@@ -1,4 +1,4 @@
-<div>
+<div [class.hide]="toChild">
 	<header class="flex border-bottom">
 		<a href="javascript:;" page-back><i class="fa fa-angle-left back-icon"></i></a>
 		<div class="text-center flex-item1">收藏列表</div>
@@ -58,3 +58,6 @@
     </div>
 </div>
 <div class="msg" [class.hide]="!showMsg">{{message}}</div>
+<div>
+	<router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
+</div>

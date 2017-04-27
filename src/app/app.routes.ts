@@ -43,7 +43,14 @@ export const ROUTES: Routes = [
         component: DetailComponent
     }]
   },*/
-  {path: 'collect', component: CollectComponent},
+  {
+    path: 'collect', 
+    component: CollectComponent,
+    children: [{
+        path: 'detail/:id',
+        component: DetailComponent
+    }]
+  },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NoContentComponent, pathMatch: 'full' },
