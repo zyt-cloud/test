@@ -194,7 +194,7 @@ export class HttpService {
     $('#loading').removeClass('hide');
 
     return this.http
-      .put(url, params, {headers: this.headers,withCredentials: true})
+      .put(url, params, {headers: this.headers/*,withCredentials: true*/})
       .toPromise()
       .then(res => {
         $('#loading').addClass('hide');
