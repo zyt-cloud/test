@@ -733,6 +733,9 @@ header > a{
   font-size: 12px;
 }
 .player-wrap{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   padding: 3% 6% 8%;
   background-color: #fff;
   border-top: 1px solid #dee5e7;
@@ -785,4 +788,6 @@ header > a{
 }
 .player-wrap i{
   font-size: 25px;
+  width: 25px;
+  text-align: center;
 }

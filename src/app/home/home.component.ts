@@ -26,11 +26,12 @@ export class HomeComponent {
 
 	isMore = false;
 	index = -1;
+	isGetting: boolean = false;
 
 	params = {
 		//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 		key: '',
-		offset: 1,
+		offset: 0,
 		max: 5
 	};
 	today: string;
@@ -51,7 +52,7 @@ export class HomeComponent {
 		this.params = {
 			//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 			key: '',
-			offset: 1,
+			offset: 0,
 			max: 5
 		};
 		this.list = null;
@@ -59,6 +60,10 @@ export class HomeComponent {
 
 	// 获取列表
 	getList(){
+		if(this.isGetting){
+			return;
+		}
+		this.isGetting = true;
 		this.http.getData(this.getListApi, this.params)
 
 	    .then((res) => {
@@ -69,10 +74,10 @@ export class HomeComponent {
 	        else{
 	        	this.isMore = false;
 	        }
-
+	        this.isGetting = false;
 	    })
 	    .catch(res => {
-
+	    	this.isGetting = false;
 	    	this.message = '获取数据失败';
 	    	this.showMsg = true;
 	    	//this.ref.
@@ -82,7 +87,7 @@ export class HomeComponent {
 
 	loadMore(){
 		if(this.isMore){
-			this.params.offset++;
+			this.params.offset += this.params.max;
 			this.getList();
 		}
 		
@@ -107,9 +112,9 @@ export class HomeComponent {
 			return;
 		}
 		
-		let url = `recording/${this.list[this.index].id}/favorites`;
+		let url = `recording/${this.list[this.index].id}/comments`;
 		let params = {
-			text = text;
+			text: text,
 			userId: this.list[this.index].userId,
 			userName: this.list[this.index].userName,
 			enabled: true
@@ -117,8 +122,7 @@ export class HomeComponent {
 		this.http.saveData(url, params)
 
 	    .then((res) => {
-	    	
-
+	    	this.showModal = false;
 	    })
 	    .catch(res => {
 
@@ -135,11 +139,13 @@ export class HomeComponent {
 		this.index = index;
 
 		let url = `recording/${this.list[this.index].id}/favorites`;
+
 		let params = {
 			userId: this.list[this.index].userId,
 			userName: this.list[this.index].userName,
-			enabled: false
+			enabled: !(this.list[this.index].favorites.length > 0)
 		};
+
 		this.http.saveData(url, params)
 
 	    .then((res) => {

@@ -27,15 +27,16 @@
 							<p>拨打时间：{{item.dialTime | datetime}}</p>
 						</div>
 						<div class="list-oprate">
-							<a href="javascript:;" (click)="toggleModal($event)"><i class="fa fa-edit"></i></a>
+							<a href="javascript:;" (click)="toggleModal($event, i)"><i class="fa fa-edit"></i></a>
 							<!-- <a class="m-l-xs" href="javascript:;"><i class="fa fa-share-alt"></i></a> -->
-							<a class="m-l-xs" href="javascript:;"><i class="fa fa-minus-circle"></i></a>
+							<a class="m-l-xs" href="javascript:;" (click)="favToggle($event, i)"><i class="fa fa-minus-circle"></i></a>
 						</div>
 					</div>
 				</a>
 			</li>
+			<li [style.padding.px]="'40px 0'" class="text-center" *ngIf="!list || list.length === 0">暂无数据</li>
 		</ul>
-		<div class="more">{{isMore ? '加载中。。。' : '没有更多了'}}</div>
+		<div *ngIf="list && list.length > params.max" class="more">{{isMore ? '加载中。。。' : '没有更多了'}}</div>
 	</div>
 	
 </div>
@@ -47,11 +48,11 @@
         </div>
         <div class="modal-body">
             <div [style.padding]="'20px'">
-            	<textarea rows="5"></textarea>
+            	<textarea rows="5" [style.width.%]="100" #text></textarea>
             </div>
         </div>
         <div class="modal-footer text-right">
-            <button type="button" class="btn btn-info m-r-sm" [disabled]="isSubmit">确定</button>
+            <button type="button" class="btn btn-info m-r-sm" (click)="addComment(text.value)">确定</button>
             <button type="button" class="btn btn-default" (click)="toggleModal()">取消</button>
         </div>
     </div>

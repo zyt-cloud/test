@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ElementRef, AfterViewInit } from '@angular/core';
 // import { transition, style, animate, state, trigger } from '@angular/animations';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -6,6 +6,8 @@ import { HttpService } from '../app.service';
 
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
+
+declare var $: any;
 
 @Component({
 
@@ -28,7 +30,7 @@ import 'rxjs/add/operator/map';
     ])
   ]*/
 })
-export class DetailComponent {
+export class DetailComponent implements AfterViewInit {
 
   private getDetailApi = 'account/';
   private getCallApi = 'recordings/search';
@@ -56,7 +58,8 @@ export class DetailComponent {
    */
   constructor(
     private http: HttpService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ref: ElementRef
 
   ) {
       this._audio = document.createElement('audio');
@@ -104,6 +107,22 @@ export class DetailComponent {
       };
       this.playData = { Style: 0, Index: 0 };
       this.playList = [];
+  }
+
+  ngAfterViewInit(){
+    let $ref = $(this.ref.nativeElement),
+      w_h = $(window).height(),
+      mt = ($(window).width() * 0.04) * 3,
+      $block = $ref.find('.detial-block'),
+      player_h = $ref.find('.player-wrap')[0].clientHeight,
+      h;
+
+    console.log(w_h,$block,player_h);
+
+    h = w_h - $block.eq(0).outerHeight() - $block.eq(1).outerHeight() - mt - player_h - 80;
+
+    $block.eq(2).height(h)
+
   }
 
   ngOnInit(): void {
@@ -323,7 +342,6 @@ export class DetailComponent {
    * @param percent
    */
   public Skip(e: any): void {
-      console.log(e);
       let percent = e.layerX / e.target.getBoundingClientRect().width;
       this._audio.currentTime = this._audio.duration * percent;
       this.playData.Current = this._audio.currentTime;

@@ -13,8 +13,8 @@ import {HttpService} from '../app.service';
 })
 export class CollectComponent {
 
-	//private getListApi = 'recording/favorites';
-	private getListApi = 'recordings/' + window.sessionStorage.getItem('user') + '/favorites';
+	private getListApi = 'recordings/favorited';
+	//private getListApi = 'recordings/' + window.sessionStorage.getItem('user') + '/favorites';
 
 	showModal = false;
 	message;
@@ -22,13 +22,15 @@ export class CollectComponent {
 	msgTime = 3000;
 	isSubmit = false;
 	list;
+	index = -1;
 
 	isMore = false;
+	isGetting: boolean = false;
 
 	params = {
 		//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 		key: '',
-		offset: 1,
+		offset: 0,
 		max: 5
 	};
 
@@ -50,7 +52,7 @@ export class CollectComponent {
 		this.params = {
 			//user: 'D88A728E-89CA-E311-A4DE-F01FAFD0F1FD',
 			key: '',
-			offset: 1,
+			offset: 0,
 			max: 5
 		};
 		this.list = null;
@@ -58,6 +60,10 @@ export class CollectComponent {
 
 
 	getList(){
+		if(this.isGetting){
+			return;
+		}
+		this.isGetting = true;
 		this.http.getData(this.getListApi, this.params)
 
 	    .then((res) => {
@@ -68,9 +74,39 @@ export class CollectComponent {
 	        else{
 	        	this.isMore = false;
 	        }
+	        this.isGetting = false;
 	    })
 	    .catch(res => {
+	    	this.isGetting = false;
 	    	this.message = '获取数据失败';
+	    	this.showMsg = true;
+	    	//this.ref.
+	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
+	    });
+	}
+
+	favToggle(e, index){
+		e.stopPropagation();
+
+		this.index = index;
+
+		let url = `recording/${this.list[this.index].id}/favorites`;
+
+		let params = {
+			userId: this.list[this.index].userId,
+			userName: this.list[this.index].userName,
+			enabled: false
+		};
+
+		this.http.saveData(url, params)
+
+	    .then((res) => {
+	    	
+
+	    })
+	    .catch(res => {
+
+	    	this.message = '操作失败';
 	    	this.showMsg = true;
 	    	//this.ref.
 	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
@@ -79,19 +115,50 @@ export class CollectComponent {
 
 	loadMore(){
 		if(this.isMore){
-			this.params.offset++;
+			this.params.offset += this.params.max;
 			this.getList();
 		}
 		
 	}
 
+	// 评论框
 	toggleModal(e?, index?){
 		e && e.stopPropagation();
 
-		if(index){
-			console.log(this.list[index])
+		if(!isNaN(index)){
+			this.index = index;
 		}
+
 	    this.showModal = !this.showModal;
+	}
+	addComment(text){
+		if(!text){
+			this.message = '请输入内容';
+	    	this.showMsg = true;
+	    	//this.ref.
+	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
+			return;
+		}
+		
+		let url = `recording/${this.list[this.index].id}/comments`;
+		let params = {
+			text: text,
+			userId: this.list[this.index].userId,
+			userName: this.list[this.index].userName,
+			enabled: true
+		};
+		this.http.saveData(url, params)
+
+	    .then((res) => {
+	    	this.showModal = false;
+	    })
+	    .catch(res => {
+
+	    	this.message = '操作失败';
+	    	this.showMsg = true;
+	    	//this.ref.
+	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
+	    });
 	}
 
 }

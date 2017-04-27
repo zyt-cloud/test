@@ -58,8 +58,9 @@
 					</div>
 				</a>
 			</li>
+			<li [style.padding.px]="'40px 0'" class="text-center" *ngIf="!list || list.length === 0">暂无数据</li>
 		</ul>
-		<div class="more">{{isMore ? '加载中。。。' : '没有更多了'}}</div>
+		<div *ngIf="list && list.length > params.max" class="more">{{isMore ? '加载中。。。' : '没有更多了'}}</div>
 	</div>
 	
 </div>
