@@ -151,7 +151,7 @@ export class HomeComponent {
 			enabled: !(this.list[this.index].favorites.length > 0)
 		};
 
-		this.http['method'](url, params)
+		this.http.saveData(url, params)
 
 	    .then((res) => {
 	    	

@@ -13,7 +13,8 @@ import {HttpService} from '../app.service';
 })
 export class CollectComponent {
 
-	private getListApi = 'recordings/favorited';
+	private getListApi = 'recordings/favorited';//myFavorite
+	//private getListApi = 'recording/myFavorite';//myFavorite
 	//private getListApi = 'recordings/' + window.sessionStorage.getItem('user') + '/favorites';
 
 	showModal = false;
@@ -91,23 +92,45 @@ export class CollectComponent {
 
 		this.index = index;
 
-		let url = `favorite/${this.list[this.index].id}`;
+		this.getFfavId();
+
+		
+	}
+
+	cancelFav(data){
+		let url = `favorite/${data.id}`;
 
 		let params = {
-			userId: this.list[this.index].userId,
-			userName: this.list[this.index].userName,
+			userId: data.userId,
+			userName: data.userName,
 			enabled: false
 		};
 
 		this.http.putData(url, params)
 
 	    .then((res) => {
-	    	
-
+	    	this.getList();
 	    })
 	    .catch(res => {
 
 	    	this.message = '操作失败';
+	    	this.showMsg = true;
+	    	//this.ref.
+	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
+	    });
+	}
+
+	getFfavId(){
+		let url = `recording/${this.list[this.index].id}/myFavorite`;
+
+		this.http.getData(url)
+
+	    .then((res) => {
+	        this.cancelFav(res);
+	    })
+	    .catch(res => {
+	    	this.isGetting = false;
+	    	this.message = '获取数据失败';
 	    	this.showMsg = true;
 	    	//this.ref.
 	    	setTimeout(() => {this.showMsg = false; }, this.msgTime);
