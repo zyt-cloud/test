@@ -154,6 +154,11 @@ export class HttpService {
     
     params.set('user', window.sessionStorage.getItem('user'));
 
+    // 测试代理
+    if(window.location.protocol === 'https:'){
+      url = 'https://bird.ioliu.cn/v1/?url=' + url;
+    }
+
     $('#loading').removeClass('hide');
 
     return this.http
