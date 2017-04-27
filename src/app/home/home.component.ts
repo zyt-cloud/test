@@ -139,6 +139,11 @@ export class HomeComponent {
 		this.index = index;
 
 		let url = `recording/${this.list[this.index].id}/favorites`;
+		let method = 'saveData';
+		if(this.list[this.index].favorites.length > 0){
+			url = `favorite/${this.list[this.index].id}`;
+			method = 'putData';
+		}
 
 		let params = {
 			userId: this.list[this.index].userId,
@@ -146,7 +151,7 @@ export class HomeComponent {
 			enabled: !(this.list[this.index].favorites.length > 0)
 		};
 
-		this.http.saveData(url, params)
+		this.http['method'](url, params)
 
 	    .then((res) => {
 	    	

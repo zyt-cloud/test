@@ -117,7 +117,6 @@ export class DetailComponent implements AfterViewInit {
       player_h = $ref.find('.player-wrap')[0].clientHeight,
       h;
 
-    console.log(w_h,$block,player_h);
 
     h = w_h - $block.eq(0).outerHeight() - $block.eq(1).outerHeight() - mt - player_h - 80;
 
@@ -250,7 +249,7 @@ export class DetailComponent implements AfterViewInit {
       this.playList.push(audio);
       if (this.playList.length === 1) {
           this.PlayIndex(0);
-          this.Toggle();
+          setTimeout(() => {this.Toggle()}, 300);
       }
   }
 

@@ -171,6 +171,38 @@ export class HttpService {
       .catch(this.handleError);
   }
 
+  // 提交数据
+  public putData(url: string, inData?: any){
+    
+    let params: URLSearchParams = new URLSearchParams();
+
+    url = 'production' !== ENV ? Config.DEV_API + url : Config.PROD_API + url;
+
+    if(inData){
+      for(let key of Object.keys(inData)){
+        params.set(key, inData[key]);
+      }
+    }
+    
+    params.set('user', window.sessionStorage.getItem('user'));
+
+    // 测试代理
+    if(window.location.protocol === 'https:'){
+      url = 'https://bird.ioliu.cn/v1/?url=' + url;
+    }
+
+    $('#loading').removeClass('hide');
+
+    return this.http
+      .put(url, params, {headers: this.headers/*,withCredentials: true*/})
+      .toPromise()
+      .then(res => {
+        $('#loading').addClass('hide');
+        return res.json()
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     //console.error('错误原因', error); // 仅用于调试
     $('#loading').addClass('hide');

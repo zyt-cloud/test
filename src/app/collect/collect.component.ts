@@ -91,7 +91,7 @@ export class CollectComponent {
 
 		this.index = index;
 
-		let url = `recording/${this.list[this.index].id}/favorites`;
+		let url = `favorite/${this.list[this.index].id}`;
 
 		let params = {
 			userId: this.list[this.index].userId,
@@ -99,7 +99,7 @@ export class CollectComponent {
 			enabled: false
 		};
 
-		this.http.saveData(url, params)
+		this.http.putData(url, params)
 
 	    .then((res) => {
 	    	
