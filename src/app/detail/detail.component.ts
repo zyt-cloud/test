@@ -211,20 +211,21 @@ export class DetailComponent implements AfterViewInit {
   public volumeCtrl(type: string){
     if(type == 'plus'){
       if(this.volumePercent < 100){
+        this.volumePercent = this.volumePercent + 10;
         try{
-          this._audio.volume += 0.1;
+          this._audio.volume = this.volumePercent / 100 + 0.1;
         }
         catch(e){
           alert('不支持声音控制')
         }
         
-        this.volumePercent += 10;
+        
         this.cref.detectChanges();
       }
       return;
     }
     if(this.volumePercent > 0){
-      this._audio.volume -= 0.1;
+      this._audio.volume = this.volumePercent / 100 - 0.1;
       this.volumePercent -= 10;
       this.cref.detectChanges();
     }
