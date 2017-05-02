@@ -53,7 +53,7 @@
 						<div class="list-oprate">
 							<a href="javascript:;" (click)="toggleModal($event, i)"><i class="fa fa-edit"></i></a>
 							<!-- <a class="m-l-xs" href="javascript:;"><i class="fa fa-share-alt"></i></a> -->
-							<a class="m-l-xs" href="javascript:;" (click)="favToggle($event, i)"><i class="fa fa-heart-o"></i></a>
+							<a class="m-l-xs" href="javascript:;" (click)="favToggle($event, i)"><i [ngClass]="{'fa-heart-o': item.favorites.length===0,'fa-heart':item.favorites.length>0}" class="fa "></i></a>
 						</div>
 					</div>
 				</a>

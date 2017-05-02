@@ -135,11 +135,11 @@ export class DetailComponent implements AfterViewInit {
     })
     .subscribe(hero => {});*/
 
-    console.log(this.route.snapshot.params['accountId']);
+    //console.log(this.route.snapshot.params['accountId']);
 
-    this.getDetail(accountId);
+    //this.getDetail(accountId);
 
-    this.getCallList(accountId/*'70D31F5C-C89D-4C81-8BD1-0384E9D6CE91'*/);
+    this.getCallList(accountId); /*'70D31F5C-C89D-4C81-8BD1-0384E9D6CE91'*/
   }
 
   getCallList(id){
@@ -379,6 +379,7 @@ export class DetailComponent implements AfterViewInit {
               this.playData.IsPlaying = true;
           }
           this.playData.Index = index;
+          this.currCall = this.list[index];
       } else {
           console.log('nothing to be play');
       }
