@@ -357,9 +357,14 @@ export class DetailComponent implements AfterViewInit {
    * @param percent
    */
   public Skip(e: any): void {
-      let percent = e.layerX / e.target.getBoundingClientRect().width;
+      let offset = $(window).width() * 0.06;
+      let percent = (e.clientX - offset) / e.target.getBoundingClientRect().width;
+
+      if(isNaN(this._audio.duration)) return;
+
       this._audio.currentTime = this._audio.duration * percent;
       this.playData.Current = this._audio.currentTime;
+      this.cref.detectChanges();
   }
 
   public PlayList() {
