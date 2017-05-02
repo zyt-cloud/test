@@ -6,43 +6,7 @@
 	</header>
 	<div [style.padding-top.px]="50">
 
-		<div class="detial-block">
-			<h3>{{detail['name']}}</h3>
-			<ng-template>
-				<p>双轴胶带复卷机|单轴胶带复卷机|胶带分条机。浙江义乌市上溪工业园区四通路102号</p>
-				<p>2016年有效沟通次数: 2次</p>
-				<p>出口趋势：全球356272 ↑↑ 土耳其49000 ↑↑</p>
-				<p>出口规模 ：全球小型企业 |土耳其小型企业 </p>
-				<p>其他核心信息：中小开</p>
-			</ng-template>
-		</div>
-
-		<div class="detial-block">
-			<h3><span class="more-voice" *ngIf="list && list['length'] > 1" (click)="toggleMore()">更多录音</span>{{currCall?.contactName}}</h3>
-			<p><i class="fa fa-phone"></i><span class="m-l-sm">{{currCall?.phoneNum}}</span></p>
-			<p>
-				<span>{{currCall?.dialTime | datetime}}</span>
-				<span class="m-l-md">
-					<i class="fa fa-clock-o"></i><span class="m-l-xs">{{currCall?.callLength | myTime}}</span>
-				</span>
-			</p>
-		</div>
 		
-		<div class="detial-block" [class.hide]="!showMore" style="overflow: auto;">
-			<ul class="msg-list">
-				<li *ngFor="let item of list; let i = index">
-					<div (click)="choiceVoice(i)">
-						<h4><span>{{item.contactName}}</span><span class="m-l-xs">{{item.dialTime | date:'yyyy/MM/dd'}}</span><i class="pull-right fa fa-volume-up"></i></h4>
-						<p>{{item.description}}</p>
-					</div>
-					
-					<div class="hide text-right">
-						<h4><span>{{item.contactName}}</span><span class="m-l-xs">{{item.dialTime | date:'yyyy/MM/dd'}}</span></h4>
-						<p>{{item.description}}</p>
-					</div>
-				</li>
-			</ul>
-		</div>
 	</div>
 	<div class="player-wrap">
 		<div class="voice flex flex-middle">
