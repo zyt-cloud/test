@@ -218,6 +218,7 @@ export class DetailComponent implements AfterViewInit {
       this.volumePercent -= 10;
     }
 
+    this.cref.detectChanges();
   }
 
   /**
@@ -247,6 +248,7 @@ export class DetailComponent implements AfterViewInit {
               this.PlayIndex(tryGet);
           }
       }
+      this.cref.detectChanges();
   }
 
   /**

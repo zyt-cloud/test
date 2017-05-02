@@ -7,6 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({name: 'datetime'})
 export class DateTimePipe implements PipeTransform {
     transform(value: any, args: string[]): any {
+
+        if(!value) return '';
         
         let date = new Date(value);
 

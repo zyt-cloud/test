@@ -4,24 +4,24 @@
 		<div class="text-center flex-item1">听音明细</div>
 		<a href="javascript:;"></a>
 	</header>
-	<div [style.padding-top.px]="50">
+	<div [style.padding-top.px]="50" *ngIf="detail">
 
 		<div class="detial-block">
-			<h3>{{detail['name']}}</h3>
-			<ng-template>
+			<h3>{{detail.name}}</h3>
+			<!-- <ng-template>
 				<p>双轴胶带复卷机|单轴胶带复卷机|胶带分条机。浙江义乌市上溪工业园区四通路102号</p>
 				<p>2016年有效沟通次数: 2次</p>
 				<p>出口趋势：全球356272 ↑↑ 土耳其49000 ↑↑</p>
 				<p>出口规模 ：全球小型企业 |土耳其小型企业 </p>
 				<p>其他核心信息：中小开</p>
-			</ng-template>
+			</ng-template> -->
 		</div>
 
-		<div class="detial-block">
-			<h3><span class="more-voice" *ngIf="list && list['length'] > 1" (click)="toggleMore()">更多录音</span>{{currCall['contactName']}}</h3>
+		<div class="detial-block" *ngIf="list">
+			<h3><span class="more-voice" *ngIf="list.length > 1" (click)="toggleMore()">更多录音</span>{{currCall.contactName}}</h3>
 			<p><i class="fa fa-phone"></i><span class="m-l-sm">{{currCall.phoneNum}}</span></p>
 			<p>
-				<span>{{currCall['dialTime'] | datetime}}</span>
+				<span>{{currCall.dialTime | datetime}}</span>
 				<span class="m-l-md">
 					<i class="fa fa-clock-o"></i><span class="m-l-xs">{{currCall.callLength | myTime}}</span>
 				</span>
