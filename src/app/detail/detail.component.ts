@@ -196,7 +196,7 @@ export class DetailComponent implements AfterViewInit {
         this.message = '获取客户明细失败';
         this.showMsg = true;
         //this.ref.
-        setTimeout(() => {this.showMsg = false; }, this.msgTime);
+        setTimeout(() => {this.showMsg = false; this.cref.detectChanges();}, this.msgTime);
       });
   }
   ngOnDestroy(){
