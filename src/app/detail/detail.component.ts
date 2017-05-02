@@ -70,6 +70,9 @@ export class DetailComponent implements AfterViewInit {
 
   ) {
       this._audio = document.createElement('audio');
+      this._audio.style.width = '0';
+      this._audio.style.height = '0';
+      document.body.appendChild(this._audio);
       this._audio.autoplay = false;
       this._audio.volume = 0.6;
       this._audio.onplay = () => {
