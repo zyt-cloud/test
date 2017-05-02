@@ -249,7 +249,7 @@ export class DetailComponent implements AfterViewInit {
       this.playList.push(audio);
       if (this.playList.length === 1) {
           this.PlayIndex(0);
-          setTimeout(() => {this.Toggle()}, 300);
+          //setTimeout(() => {this.Toggle()}, 300);
       }
   }
 
