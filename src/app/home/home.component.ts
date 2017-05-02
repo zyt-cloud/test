@@ -181,8 +181,10 @@ export class HomeComponent {
 
 	onActivate(e){
        this.toChild = true;
+       this.ref.detectChanges();
 	}
 	onDeactivate(e){
 	    this.toChild = false;
+	    this.ref.detectChanges();
 	}
 }

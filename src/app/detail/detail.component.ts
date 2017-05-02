@@ -210,15 +210,17 @@ export class DetailComponent implements AfterViewInit {
       if(this.volumePercent < 100){
         this._audio.volume += 0.1;
         this.volumePercent += 10;
+        this.cref.detectChanges();
       }
       return;
     }
     if(this.volumePercent > 0){
       this._audio.volume -= 0.1;
       this.volumePercent -= 10;
+      this.cref.detectChanges();
     }
 
-    this.cref.detectChanges();
+    
   }
 
   /**
