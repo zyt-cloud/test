@@ -10,9 +10,6 @@ import {DHBModalDirective} from './modal.directive';
 //阻止冒泡指令
 import {StopBubbleDirective} from './stop-bubble.directive';
 
-// 分页组件
-import {PaginationComponent} from './pagination.component';
-
 import {TimePipe} from './time.pipe';
 import {DateTimePipe} from './datetime.pipe';
 
@@ -26,8 +23,7 @@ import {ScrollDirective} from './scroll.directive';
       StopBubbleDirective,
       TimePipe,
       DateTimePipe,
-      ScrollDirective,
-      PaginationComponent
+      ScrollDirective
   ],
   imports: [
     CommonModule
@@ -40,8 +36,7 @@ import {ScrollDirective} from './scroll.directive';
       StopBubbleDirective,
       TimePipe,
       DateTimePipe,
-      ScrollDirective,
-      PaginationComponent
+      ScrollDirective
   ]
 })
 export class ShareModule {
