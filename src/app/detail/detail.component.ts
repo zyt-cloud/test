@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, ElementRef, AfterViewInit, ChangeDetectorRef} from '@angular/core';
 // import { transition, style, animate, state, trigger } from '@angular/animations';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -40,7 +40,13 @@ export class DetailComponent implements AfterViewInit {
   msgTime = 3000;
   detail = {};
   list;
-  currCall;
+  currCall = {
+    mediaId: '',
+    contactName: '',
+    dialTime: '',
+    phoneNum: '',
+    callLength: 0
+  };
   public showMore: boolean = false;
 
   // 主音频标签
@@ -59,7 +65,8 @@ export class DetailComponent implements AfterViewInit {
   constructor(
     private http: HttpService,
     private route: ActivatedRoute,
-    private ref: ElementRef
+    private ref: ElementRef,
+    private cref: ChangeDetectorRef
 
   ) {
       this._audio = document.createElement('audio');
@@ -68,13 +75,15 @@ export class DetailComponent implements AfterViewInit {
       this._audio.onplay = () => {
           let that = this;
           this.listenInterval = window.setInterval(() => {
-              that.playData.Current = that._audio.currentTime;
-              that.playData.Url = that._audio.src;
-              that.playData.During = that._audio.duration;
-              that.playData.Data = that._audio.buffered &&
-                  that._audio.buffered.length ?
-                  (that._audio.buffered.end(0) || 0) :
+              this.playData.Current = this._audio.currentTime;
+              this.playData.Url = this._audio.src;
+              this.playData.During = this._audio.duration;
+              this.playData.Data = this._audio.buffered &&
+                  this._audio.buffered.length ?
+                  (this._audio.buffered.end(0) || 0) :
                   0;
+
+              this.cref.detectChanges();
           }, 1000);
           this.playData.IsPlaying = true;
       };
@@ -120,7 +129,7 @@ export class DetailComponent implements AfterViewInit {
 
     h = w_h - $block.eq(0).outerHeight() - $block.eq(1).outerHeight() - mt - player_h - 80;
 
-    $block.eq(2).height(h)
+    $block.eq(2).height(h);
 
   }
 
@@ -226,7 +235,7 @@ export class DetailComponent implements AfterViewInit {
           this.playList.push(audio);
           this.PlayIndex(this.playList.length);
       } else {
-          if (tryGet === this.playData.Index) {
+          if (tryGet === this.playData.Index && this._audio.src) {
               if (this._audio.paused) {
                   this._audio.play();
                   this.playData.IsPlaying = true;
@@ -248,7 +257,7 @@ export class DetailComponent implements AfterViewInit {
   public Add(audio): void {
       this.playList.push(audio);
       if (this.playList.length === 1) {
-          this.PlayIndex(0);
+          //this.PlayIndex(0);
           //setTimeout(() => {this.Toggle()}, 300);
       }
   }
