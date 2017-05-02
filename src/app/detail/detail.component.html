@@ -50,8 +50,8 @@
 				<i class="fa fa-volume-down" (click)="volumeCtrl('minus')"></i>
 			</div>
 			<div class="voice-bar flex-item1">
-				<div [style.width.%]="volumePercent"></div>
-				<a href="javascript:;" [style.left.%]="volumePercent"></a>
+				<div [ngStyle]="{'width': volumePercent + '%'}"></div>
+				<a [ngStyle]="{'left': volumePercent + '%'}" href="javascript:;"></a>
 			</div>
 			<div class="voice-plus">
 				<i class="fa fa-volume-up" (click)="volumeCtrl('plus')"></i>

@@ -146,7 +146,7 @@ export class DetailComponent implements AfterViewInit {
 
     //console.log(this.route.snapshot.params['accountId']);
 
-    //this.getDetail(accountId);
+    this.getDetail(accountId);
 
     this.getCallList(accountId); /*'70D31F5C-C89D-4C81-8BD1-0384E9D6CE91'*/
   }
