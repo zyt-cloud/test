@@ -208,10 +208,16 @@ export class DetailComponent implements AfterViewInit {
     //delete this._audio;
   }
 
-  public volumeCtrl(type){
-    if(type === 'plus'){
+  public volumeCtrl(type: string){
+    if(type == 'plus'){
       if(this.volumePercent < 100){
-        this._audio.volume += 0.1;
+        try{
+          this._audio.volume += 0.1;
+        }
+        catch(e){
+          alert('不支持声音控制')
+        }
+        
         this.volumePercent += 10;
         this.cref.detectChanges();
       }
