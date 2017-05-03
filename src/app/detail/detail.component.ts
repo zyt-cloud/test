@@ -79,7 +79,7 @@ export class DetailComponent implements AfterViewInit {
           this.playData.During = this.currCall.callLength;
 
           this.listenInterval = window.setInterval(() => {
-              this.playData.Current = this._audio.currentTime;
+              this.playData.Current = this._audio.currentTime > this.playData.During ? this.playData.During : this._audio.currentTime;
               this.playData.Url = this._audio.src;
               //this.playData.During = this.currCall.callLength;//this._audio.duration;
               this.playData.Data = this._audio.buffered &&
@@ -98,7 +98,7 @@ export class DetailComponent implements AfterViewInit {
       };
       this._audio.onabort = () => {
           window.clearInterval(this.listenInterval);
-          this.playData.Current = this._audio.currentTime;
+          this.playData.Current = this._audio.currentTime > this.playData.During ? this.playData.During : this._audio.currentTime;;
           this.playData.Url = this._audio.src;
           this.playData.During = this.currCall.callLength;//this._audio.duration;
           this.playData.Data = this._audio.buffered &&
@@ -109,7 +109,7 @@ export class DetailComponent implements AfterViewInit {
       };
       this._audio.onpause = () => {
           window.clearInterval(this.listenInterval);
-          this.playData.Current = this._audio.currentTime;
+          this.playData.Current = this._audio.currentTime > this.playData.During ? this.playData.During : this._audio.currentTime;;
           this.playData.Url = this._audio.src;
           this.playData.During = this.currCall.callLength;//this._audio.duration;
           this.playData.Data = this._audio.buffered &&
