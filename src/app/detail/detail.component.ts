@@ -76,11 +76,12 @@ export class DetailComponent implements AfterViewInit {
       this._audio.autoplay = false;
       this._audio.volume = 0.6;
       this._audio.onplay = () => {
-          let that = this;
+          this.playData.During = this.currCall.callLength;
+
           this.listenInterval = window.setInterval(() => {
               this.playData.Current = this._audio.currentTime;
               this.playData.Url = this._audio.src;
-              this.playData.During = this._audio.duration;
+              //this.playData.During = this.currCall.callLength;//this._audio.duration;
               this.playData.Data = this._audio.buffered &&
                   this._audio.buffered.length ?
                   (this._audio.buffered.end(0) || 0) :
@@ -99,7 +100,7 @@ export class DetailComponent implements AfterViewInit {
           window.clearInterval(this.listenInterval);
           this.playData.Current = this._audio.currentTime;
           this.playData.Url = this._audio.src;
-          this.playData.During = this._audio.duration;
+          this.playData.During = this.currCall.callLength;//this._audio.duration;
           this.playData.Data = this._audio.buffered &&
               this._audio.buffered.length ?
               (this._audio.buffered.end(0) || 0) :
@@ -110,7 +111,7 @@ export class DetailComponent implements AfterViewInit {
           window.clearInterval(this.listenInterval);
           this.playData.Current = this._audio.currentTime;
           this.playData.Url = this._audio.src;
-          this.playData.During = this._audio.duration;
+          this.playData.During = this.currCall.callLength;//this._audio.duration;
           this.playData.Data = this._audio.buffered &&
               this._audio.buffered.length ?
               (this._audio.buffered.end(0) || 0) :
