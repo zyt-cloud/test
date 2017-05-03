@@ -370,7 +370,8 @@ export class DetailComponent implements AfterViewInit {
 
       if(isNaN(this._audio.duration)) return;
 
-      this._audio.currentTime = this._audio.duration * percent;
+      //this._audio.currentTime = this._audio.duration * percent;
+      this._audio.currentTime = this.currCall.callLength * percent;
       this.playData.Current = this._audio.currentTime;
       this.cref.detectChanges();
   }
@@ -388,8 +389,8 @@ export class DetailComponent implements AfterViewInit {
    * 防止播放进度偏差导致的用户体验
    */
   private FillPlayData(): void {
-      this.playData.Current = this._audio.duration;
-      this.playData.Data = this._audio.duration;
+      this.playData.Current = this.currCall.callLength;//this._audio.duration;
+      this.playData.Data = this.currCall.callLength;//this._audio.duration;
   }
 
   /**
