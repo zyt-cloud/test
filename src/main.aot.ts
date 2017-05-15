@@ -2,7 +2,7 @@
  * Angular bootstraping
  */
 import { platformBrowser } from '@angular/platform-browser';
-import { decorateModuleRef } from './app/environment';
+// import { decorateModuleRef } from './app/environment';
 /*
  * App Module
  * our top level module that holds all of our components
@@ -16,7 +16,7 @@ import { AppModuleNgFactory } from '../compiled/src/app/app.module.ngfactory';
 export function main(): Promise<any> {
   return platformBrowser()
     .bootstrapModuleFactory(AppModuleNgFactory)
-    .then(decorateModuleRef)
+    .then(() => {})
     .catch((err) => console.error(err));
 }
 
